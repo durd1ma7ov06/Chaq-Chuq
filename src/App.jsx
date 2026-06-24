@@ -15,6 +15,10 @@ const products = [
   { id: 10, name: "Makadamiya Yong'og'i", image: "/image/product_macadamia_both.png", desc: "Sariyog' ta'mli, mayin va juda foydali, qarsildoq makadamiya yong'oqlari." },
 ];
 
+const shelves = [
+  { id: 1, name: "Premium Dispenser Polka", image: "/image/polka1.jpg", desc: "Bizning do'konlar uchun maxsus tayyorlangan, qulay dispenserli va brendlangan premium polka." }
+];
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -123,6 +127,16 @@ function App() {
             </a>
           </motion.div>
         </motion.div>
+
+        <motion.div 
+          className="hero-brand-overlay"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          <img src="/image/logo.png" alt="Chaq-Chuq Logo" className="hero-brand-logo" />
+          <h2 className="hero-brand-text">Chaq-Chuq Xorazm</h2>
+        </motion.div>
       </section>
 
       {/* Products Section */}
@@ -162,40 +176,39 @@ function App() {
       </section>
 
       {/* Polka (Shelf) Section */}
-      <section id="polka" className="section" style={{ background: 'linear-gradient(180deg, #fdf6e3, #f5eed6)' }}>
-        <div className="container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4rem' }}>
-            <motion.div 
-              style={{ flex: '1 1 400px' }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeInUp}
-            >
-              <h2 style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Bizning Maxsus Polkamiz</h2>
-              <p style={{ marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                Bizning mahsulotlar hamkor do'konlarda maxsus brendlangan va har bir mahsulot turi uchun alohida dispenserli polkalarda taqdim etiladi. Bu o'z navbatida mahsulotning sifati va tozaligini kafolatlaydi.
-              </p>
-              <ul style={{ listStyle: 'none', lineHeight: '2.5', color: 'var(--text-color)', fontWeight: '600', fontSize: '1.1rem' }}>
-                <li><FaChevronRight size={14} color="var(--accent-color)"/> Gigiyenik jihatdan toza va yopiq saqlash</li>
-                <li><FaChevronRight size={14} color="var(--accent-color)"/> Oson va qulay foydalanish (dispenser tizimi)</li>
-                <li><FaChevronRight size={14} color="var(--accent-color)"/> Mahsulotlarning doimo yangi va qarsildoq turishi</li>
-                <li><FaChevronRight size={14} color="var(--accent-color)"/> Zamonaviy hamda do'konga joziba beruvchi ko'rinish</li>
-              </ul>
-            </motion.div>
-            <motion.div 
-              style={{ flex: '1 1 400px', textAlign: 'center' }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-            >
-              <div style={{ background: 'rgba(255, 255, 255, 0.4)', backdropFilter: 'blur(10px)', padding: '2rem', borderRadius: '32px', border: '1px solid rgba(217, 119, 6, 0.1)', display: 'inline-block', boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}>
-                <img src="/image/polka1.jpg" alt="Chaq-Chuq Polka" style={{ width: '100%', maxWidth: '350px', borderRadius: '20px', boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }} />
+      <section id="polka" className="section container">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
+          <h2>Bizning Polkalarmiz</h2>
+          <p style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
+            Hamkorlarimiz va do'konlar uchun brendlangan maxsus savdo javonlari hamda dispenser polkalari.
+          </p>
+        </motion.div>
+
+        <motion.div 
+          className="product-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          {shelves.map((shelf) => (
+            <motion.div key={shelf.id} className="glass-panel" variants={fadeInUp}>
+              <div className="product-img-wrapper" style={{ background: '#fff', height: '340px', padding: '1rem' }}>
+                <img src={shelf.image} alt={shelf.name} className="product-img" style={{ objectFit: 'contain' }} />
               </div>
+              <h3 className="product-title">{shelf.name}</h3>
+              <p style={{ fontSize: '0.95rem', marginBottom: '1.5rem' }}>{shelf.desc}</p>
+              <a href="#contact" style={{ color: 'var(--accent-color)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600', marginTop: 'auto' }}>
+                Polka Buyurtma Qilish <FaChevronRight size={16} />
+              </a>
             </motion.div>
-          </div>
-        </div>
+          ))}
+        </motion.div>
       </section>
 
       {/* Delivery Section */}

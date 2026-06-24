@@ -202,13 +202,68 @@ p {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-top: 5rem; /* Space for navbar */
   position: relative;
+  gap: 4rem;
 }
 
 .hero-content {
+  flex: 1.2;
   max-width: 600px;
   z-index: 10;
+}
+
+.hero-brand-overlay {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hero-brand-logo {
+  width: clamp(200px, 20vw, 320px);
+  height: auto;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.08));
+  animation: floatLogo 6s ease-in-out infinite;
+}
+
+.hero-brand-text {
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  font-weight: 900;
+  color: var(--text-color);
+  margin-top: 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #0f172a, var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem 2rem;
+    gap: 2rem;
+  }
+  .hero-content {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+  .hero-brand-overlay {
+    width: 100%;
+  }
 }
 
 /* Product Grid */

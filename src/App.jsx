@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaInstagram, FaPhoneAlt, FaShoppingBag, FaStar, FaChevronRight } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaInstagram, FaPhoneAlt, FaShoppingBag, FaStar, FaChevronRight, FaBars, FaTimes } from 'react-icons/fa';
 
 const products = [
   { id: 1, name: "Tuzli Qora Pista", image: "/image/qora_tuzli.JPG", desc: "Maxsus usulda tuzlab qovurilgan, ishtahaochar va mazali qora pista." },
@@ -80,6 +80,11 @@ function FloatingParticles() {
 }
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
+
   return (
     <>
       {/* Navbar */}
@@ -94,6 +99,28 @@ function App() {
           <a href="#delivery">Yetkazib Berish</a>
           <a href="#contact">Bog'lanish</a>
         </div>
+        <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Navigation Menu">
+          {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+
+        {/* Mobile Menu Drawer */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              className="mobile-drawer"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <a href="#home" onClick={closeMenu}>Asosiy</a>
+              <a href="#products" onClick={closeMenu}>Mahsulotlar</a>
+              <a href="#polka" onClick={closeMenu}>Polka</a>
+              <a href="#delivery" onClick={closeMenu}>Yetkazib Berish</a>
+              <a href="#contact" onClick={closeMenu}>Bog'lanish</a>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Hero Section */}

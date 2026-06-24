@@ -1,0 +1,4 @@
+node_modules
+dist
+.vite
+remove_bg.py

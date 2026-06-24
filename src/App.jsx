@@ -3,13 +3,16 @@ import { motion } from 'framer-motion';
 import { FaInstagram, FaPhoneAlt, FaShoppingBag, FaStar, FaChevronRight } from 'react-icons/fa';
 
 const products = [
-  { id: 1, name: "Premium Bodom", image: "/image/bodom_almonds.png", desc: "Eng sara, yirik va qarsildoq shirin bodomlar." },
-  { id: 2, name: "Makadamiya Yong'og'i", image: "/image/product_macadamia_both.png", desc: "Sariyog' ta'mli, mayin va juda foydali, qarsildoq makadamiya yong'oqlari (archilgan va qobig'ida)." },
-  { id: 3, name: "Oq Xandon Pista", image: "/image/oq_pista_v2.png", desc: "Yupqa po'stli, oqartirilgan va to'liq ochilgan premium xandon pista." },
-  { id: 4, name: "Tuzli Qora Pista", image: "/image/qora_pista_v2.png", desc: "Maxsus usulda tuzlab qovurilgan, ishtahaochar va mazali qora pista." },
-  { id: 5, name: "Tuzsiz Qora Pista", image: "/image/tuzsiz_qora_pista.png", desc: "Tabiiy, tuzsiz va sof holida qovurilgan, sog'lom tanlov — qora pista." },
-  { id: 6, name: "Chaq-Chuq Semichkalari", image: "/image/oq_semichka.png", desc: "Katta o'lchamli, to'yimli va ajoyib ta'mga ega oq qarsildoq semichkalar." },
-  { id: 7, name: "Chaq-Chuq Qurti", image: "/image/uzbek_qurt.png", desc: "Haqiqiy o'zbekona ta'm. Chaq-chuq mahsulotlari bilan yeyish uchun maxsus qurtlar." }
+  { id: 1, name: "Tuzli Qora Pista", image: "/image/qora_tuzli.JPG", desc: "Maxsus usulda tuzlab qovurilgan, ishtahaochar va mazali qora pista." },
+  { id: 2, name: "Tuzsiz Qora Pista", image: "/image/qora_tuzsiz.JPG", desc: "Tabiiy, tuzsiz va sof holida qovurilgan, sog'lom tanlov — qora pista." },
+  { id: 3, name: "Chaq-Chuq Semichkalari", image: "/image/semichka.JPG", desc: "Katta o'lchamli, to'yimli va ajoyib ta'mga ega oq qarsildoq semichkalar." },
+  { id: 4, name: "Keshyu", image: "/image/keshyu.JPG", desc: "Mayin, shirali va foydali moddalar bilan to'la premium keshyu yong'oqlari." },
+  { id: 5, name: "O'rik Mag'izi", image: "/image/orik.JPG", desc: "Tabiiy va foydali, yumshoq ta'mli o'rik mag'izlari." },
+  { id: 6, name: "Pistashki", image: "/image/pistashki.JPG", desc: "Eng sifatli, yirik va mazali tanlangan pistashkalar." },
+  { id: 7, name: "Chaq-Chuq Qurti (6-lik)", image: "/image/qurt6.JPG", desc: "Oilaviy to'plam. 6 donali an'anaviy o'zbek qurti." },
+  { id: 8, name: "Chaq-Chuq Qurti (1-lik)", image: "/image/qurt1.JPG", desc: "Yakka to'plam. Haqiqiy o'zbekona ta'mdagi sifatli qurt." },
+  { id: 9, name: "Premium Bodom", image: "/image/bodom_almonds.png", desc: "Eng sara, yirik va qarsildoq shirin bodomlar." },
+  { id: 10, name: "Makadamiya Yong'og'i", image: "/image/product_macadamia_both.png", desc: "Sariyog' ta'mli, mayin va juda foydali, qarsildoq makadamiya yong'oqlari." },
 ];
 
 const fadeInUp = {
@@ -21,7 +24,7 @@ const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 }
+    transition: { staggerChildren: 0.12 }
   }
 };
 
@@ -83,6 +86,7 @@ function App() {
         <div className="nav-links">
           <a href="#home">Asosiy</a>
           <a href="#products">Mahsulotlar</a>
+          <a href="#polka">Polka</a>
           <a href="#delivery">Yetkazib Berish</a>
           <a href="#contact">Bog'lanish</a>
         </div>
@@ -149,12 +153,49 @@ function App() {
               </div>
               <h3 className="product-title">{product.name}</h3>
               <p style={{ fontSize: '0.95rem', marginBottom: '1.5rem' }}>{product.desc}</p>
-              <a href="#contact" style={{ color: 'var(--accent-color)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600' }}>
+              <a href="#contact" style={{ color: 'var(--accent-color)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600', marginTop: 'auto' }}>
                 Buyurtma Berish <FaChevronRight size={16} />
               </a>
             </motion.div>
           ))}
         </motion.div>
+      </section>
+
+      {/* Polka (Shelf) Section */}
+      <section id="polka" className="section" style={{ background: 'linear-gradient(180deg, #fdf6e3, #f5eed6)' }}>
+        <div className="container">
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4rem' }}>
+            <motion.div 
+              style={{ flex: '1 1 400px' }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+            >
+              <h2 style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Bizning Maxsus Polkamiz</h2>
+              <p style={{ marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                Bizning mahsulotlar hamkor do'konlarda maxsus brendlangan va har bir mahsulot turi uchun alohida dispenserli polkalarda taqdim etiladi. Bu o'z navbatida mahsulotning sifati va tozaligini kafolatlaydi.
+              </p>
+              <ul style={{ listStyle: 'none', lineHeight: '2.5', color: 'var(--text-color)', fontWeight: '600', fontSize: '1.1rem' }}>
+                <li><FaChevronRight size={14} color="var(--accent-color)"/> Gigiyenik jihatdan toza va yopiq saqlash</li>
+                <li><FaChevronRight size={14} color="var(--accent-color)"/> Oson va qulay foydalanish (dispenser tizimi)</li>
+                <li><FaChevronRight size={14} color="var(--accent-color)"/> Mahsulotlarning doimo yangi va qarsildoq turishi</li>
+                <li><FaChevronRight size={14} color="var(--accent-color)"/> Zamonaviy hamda do'konga joziba beruvchi ko'rinish</li>
+              </ul>
+            </motion.div>
+            <motion.div 
+              style={{ flex: '1 1 400px', textAlign: 'center' }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <div style={{ background: 'rgba(255, 255, 255, 0.4)', backdropFilter: 'blur(10px)', padding: '2rem', borderRadius: '32px', border: '1px solid rgba(217, 119, 6, 0.1)', display: 'inline-block', boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}>
+                <img src="/image/polka1.jpg" alt="Chaq-Chuq Polka" style={{ width: '100%', maxWidth: '350px', borderRadius: '20px', boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }} />
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Delivery Section */}
